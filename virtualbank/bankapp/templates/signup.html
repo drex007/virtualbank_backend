@@ -1,0 +1,22 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="POST"> {% csrf_token %}
+        <h4>Username</h4>: {{forms.username}} <br>
+        <h4>Email</h4>: {{forms.email}} <br>
+        <h4>Password </h4>: {{forms.password1}} <br>
+        <h4>Password confirmations</h4> {{forms.password2}} <br>
+       
+        <p>Please Your Password Must Contain 8 charcaters, and it shouldnt be number all through</p>
+        {% for form in second_form %}
+          <h4>{{form.label}}</h4> {{form}} <br>
+        {% endfor %}
+        <a href=""> <input type="submit" value="Signup"></a>
+    </form>
+</body>
+</html>

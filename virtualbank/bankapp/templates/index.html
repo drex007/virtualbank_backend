@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index/Login Page</title>
+</head>
+<body>
+    <h4>HOME</h4>
+    <h3>Hi, {{request.user}}</h3>
+   
+   <form action="" method="GET">
+    <a href="{% url 'user-dashboard' user.id  %}" ><input type="button" value ="Dashboard"></a>
+   </form>
+   <form action="" method="GET">
+    <a href="{% url 'balance' user.id  %}" ><input type="button" value ="Get Balance"></a>
+   </form>
+   <form action="" method="GET">
+    <a href="{% url 'check-transactions'  %}" ><input type="button" value =" See Transactions History"></a>
+   </form>
+   <form action="" method="POST"> {% csrf_token %}
+    <a href="{% url 'transactions'  %}" ><input type="button" value ="Make Transfer"></a>
+   </form>
+   <form action="" method="POST"> {% csrf_token %}
+    <a href="{% url 'deposit' %}" ><input type="button" value ="Make Deposit"></a>
+   </form>
+   <a href="{% url 'logout' %}" ><input type="submit" value ="Logout"></a>
+   
+ 
+</body>
+</html>

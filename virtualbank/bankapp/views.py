@@ -176,15 +176,15 @@ def user_dashboard(request, pk):
      'firstname' : firstname,
     'secondname': secondname,
     'accountnumber' : accountnumber,
-     'phone ': phone,
+     'phone': phone,
      'emailaddress' : emailaddress
     }            
 
     return render(request,'dashboard.html', context)
 
 
-def get_balance(request,pk):
-    user = get_object_or_404(Dashboard, id =pk)
+def get_balance(request):
+    user = get_object_or_404(Dashboard, username= request.user)
     # user = Dashboard.objects.get(id=pk)
     balance = user.amount
     username = user.username

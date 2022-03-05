@@ -6,14 +6,14 @@
     <title>Make Transactions</title>
 </head>
 <body>
-    <H4>HI</H4>
+    <H4>Hi, {{request.user}}</H4>
     <form action="" method="POST"> {% csrf_token %}
         {% for form in forms %}
              {{form.label}}<br>
              {{form}} 
              <hr>
         {% endfor %}
-        <input type="submit" value="Validate details">
+        <input type="submit" value="Validate Transfer">
     </form>
 </body>
 </html>

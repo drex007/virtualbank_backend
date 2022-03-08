@@ -46,14 +46,16 @@ def loggin(request):
     if request.user.is_authenticated:
         return redirect('home')
     if request.method == "POST":
-        loginform = LoginForm(request.POST)
-        if loginform.is_valid():
-            username = loginform.cleaned_data['username'].lower()
-            password = loginform.cleaned_data['password']
-            try:
-                user = User.objects.get(username = username )
-            except:
-                 return HttpResponse("User Does Not Exist")
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+        # loginform = LoginForm(request.POST)
+        # if loginform.is_valid():
+        #     # username = loginform.cleaned_data['username'].lower()
+        #     # password = loginform.cleaned_data['password']
+        try:
+            user = User.objects.get(username = username )
+        except:
+            return HttpResponse("User Does Not Exist")
 
         user = authenticate(request, username = username, password = password)
 
@@ -151,6 +153,7 @@ def check_transactions(request):
     current_user = get_object_or_404(User, username =request.user)
     # current_user = User.objects.get(username=request.user)
     trans = current_user.transactions_set.all()
+    
     context = {'transactions': trans}
     return render (request, 'transactions.html', context)
 

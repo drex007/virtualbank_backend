@@ -1,14 +1,22 @@
+{% extends 'navbar.html' %}
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Deposit </title>
 </head>
 <body>
-    <form action="" method="POST"> {% csrf_token %}
-        Deposit: {{forms}}
-        <input type="submit" value="deposit">
-    </form>
+    {% block content %}
+        {% include 'navbar.html' %}
+    <div class="deposit">
+                <form action="" method="POST"> {% csrf_token %}
+                  {{forms}}
+                   <button  class="signup"type="">Deposit</button>
+                </form>
+    </div>
+    {% endblock %}
 </body>
 </html>

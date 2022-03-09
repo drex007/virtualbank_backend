@@ -1,19 +1,26 @@
+{% extends 'navbar.html' %}
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>Make Transactions</title>
 </head>
 <body>
-    <H4>Hi, {{request.user}}</H4>
-    <form action="" method="POST"> {% csrf_token %}
-        {% for form in forms %}
-             {{form.label}}<br>
-             {{form}} 
-             <hr>
-        {% endfor %}
-        <input type="submit" value="Validate Transfer">
-    </form>
+      {% block content %}
+      {% include 'navbar.html' %}
+      <H4>Hi, {{request.user}}, You are about making a Transfer</H4>
+      <form action="" method="POST"> {% csrf_token %}
+          {% for form in forms %}
+               {{form.label}}<br>
+               {{form}} 
+               <hr>
+          {% endfor %}
+          <input type="submit" value="Validate Transfer">
+      </form>
+
+      {% endblock %}
 </body>
 </html>

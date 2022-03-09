@@ -1,13 +1,24 @@
+{% extends 'navbar.html' %}
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>Transactions</title>
 </head>
 <body>
-    {% for transaction in transactions %}
-      {{transaction}} | Amount{{transaction.amount_transacted}}<br> <hr> 
+   {% block content %}
+   {% include 'navbar.html' %}
+   {% for transaction in transactions %}
+        {% if transaction.trans_title == 'Deposit' %}
+        <div class="transactions"> <span style="color: green;">{{transaction}}</span> | <span style="color: green;">Amount ${{transaction.amount_transacted}}</span> | Receiver |{{transaction.receiver_detail}} </div> <hr>
+        {% else %}
+        <div class="transactions"> <span style="color: red;">{{transaction}}</span> | <span style="color: red;">Amount ${{transaction.amount_transacted}}</span>  | Receiver |{{transaction.receiver_detail}} </div> <hr>
+        {% endif %}
     {% endfor %}
+
+   {% endblock %}
 </body>
 </html>

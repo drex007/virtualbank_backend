@@ -1,16 +1,25 @@
+{% extends 'navbar.html' %}
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>Users Dashboard </title>
 </head>
 <body>
-   <h4>Firstname</h4> {{firstname}}
-   <h4>Secondname</h4>  {{secondname}}
-   <h4>Email </h4> {{emailaddress}}
-   <h4>Phone Number </h4> 0{{phone}}
-   <h4>Account Number</h4> {{accountnumber}}
-   <h4>Bank Name</h4> {{bank}}
+    <div class="back">
+        {% block content %}
+        {% include 'navbar.html' %}
+      
+        <h4>Firstname :   {{firstname}}</h4>  <hr>
+        <h4>SecondName: {{secondname}} </h4>   <hr>
+        <h4>Email:  {{emailaddress}} </h4>  <hr>
+        <h4>Phone Number :  0{{phone}} </h4> <hr>
+        <h4>Account Number:  {{accountnumber}}</h4>  <hr>
+        <h4>Bank Name:   {{bank}} </h4>
+        {% endblock %}
+    </div>
 </body>
 </html>

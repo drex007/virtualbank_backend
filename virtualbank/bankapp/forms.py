@@ -9,8 +9,18 @@ from django.contrib.auth.forms import UserCreationForm
 
 
 class LoginForm(forms.Form):
-    username = forms.CharField(label='username', max_length=50)
-    password = forms.CharField(widget=forms.PasswordInput, label= 'password')
+    username = forms.CharField(label='username', max_length=50, widget=forms.TextInput(attrs={
+        "class":"inputForm",
+        "type":"text",
+        "placeholder": "Enter Username"
+
+    }))
+    password = forms.CharField(label= 'password', widget=forms.TextInput(attrs={
+        "class":"inputForm",
+        "type":"password",
+        "placeholder": "Enter password"
+
+    }))
 
 
 class DashForm(ModelForm):
@@ -32,11 +42,35 @@ class TransactionForm(forms.Form):
 
 
 class SignUpForm(UserCreationForm):
+    username = forms.CharField( widget=forms.TextInput(attrs={
+        "class":"inputForm",
+        "type":"text",
+        "placeholder": "Enter Username"
+
+    }))
+    email = forms.CharField( widget=forms.TextInput(attrs={
+        "class":"inputForm",
+        "type":"email",
+        "placeholder": "Enter Email"
+
+    }))
+    password1 = forms.CharField( widget=forms.TextInput(attrs={
+        "class":"inputForm",
+        "type":"password",
+        "placeholder": "Enter Password"
+
+    }))
+    password2 = forms.CharField( widget=forms.TextInput(attrs={
+        "class":"inputForm",
+        "type":"password",
+        "placeholder": "Password confirmation"
+
+    }))
     class Meta:
         model = User
         fields =  ["username", "email", "password1", "password2" ]
 class SignUpForm2(forms.Form):
-    DEFAULTBANK = 'XXXXXXXXX'
+    DEFAULTBANK = '********'
     DIAMOND_BANK = 'DIAMOND BANK'
     UBA_BANK = 'UBA BANK'
     ACCESS_BANK = 'ACCESS BANK'
@@ -44,16 +78,31 @@ class SignUpForm2(forms.Form):
     FIRST_BANK = 'FIRST BANK'
 
     SELECT_BANK = [
-     (DEFAULTBANK ,'XXXXXXXXX'),
+     (DEFAULTBANK ,'********'),
      (DIAMOND_BANK ,'DIAMOND BANK'),
      (UBA_BANK , 'UBA BANK'),
      (ACCESS_BANK , 'ACCESS BANK'),
      (ZENITH_BANK , 'ZENITH BANK' ),
      (FIRST_BANK , 'FIRST BANK')
     ]
-    firstname = forms.CharField(label='firstname', max_length=50)
-    lastname = forms.CharField(label='lastname', max_length=50)
-    phonenumber = forms.IntegerField(label='phonenumber', min_value=0)
+    firstname = forms.CharField(label='firstname', max_length=50, widget=forms.TextInput(attrs={
+        "class":"inputForm",
+        "type":"text",
+        "placeholder": "FirstName"
+
+    }))
+    lastname = forms.CharField(label='lastname', max_length=50, widget=forms.TextInput(attrs={
+        "class":"inputForm",
+        "type":"text",
+        "placeholder": "LastName"
+
+    }))
+    phonenumber = forms.IntegerField(label='phonenumber', min_value=0, widget=forms.TextInput(attrs={
+        "class":"inputForm",
+        "type":"text",
+        "placeholder": "Number"
+
+    }))
     bank = forms.ChoiceField(label='bank',  choices= SELECT_BANK)
 
 

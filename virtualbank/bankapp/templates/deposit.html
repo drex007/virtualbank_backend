@@ -1,5 +1,9 @@
 {% extends 'navbar.html' %}
+
 {% load static %}
+{% load crispy_forms_tags %}
+
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,10 +15,10 @@
 <body>
     {% block content %}
         {% include 'navbar.html' %}
-    <div class="deposit">
+    <div class="deposit"  style="margin-top: 10vh; margin-left: 60px; margin-right: 60px;">
                 <form action="" method="POST"> {% csrf_token %}
-                  {{forms}}
-                   <button  class="signup"type="">Deposit</button>
+                  {{depositforms.deposit|as_crispy_field}}
+                   <button type="submit" class="btn btn-success"  style="width: 30%; margin-top: 30px;">Deposit</button>
                 </form>
     </div>
     {% endblock %}

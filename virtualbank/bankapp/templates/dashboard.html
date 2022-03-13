@@ -12,13 +12,18 @@
     <div class="back">
         {% block content %}
         {% include 'navbar.html' %}
+          <div style="margin-top: 10vh; margin-left: 20px; margin-right: 20px;">
+            <h4>Firstname :   {{firstname}}</h4>  <hr>
+            <h4>SecondName: {{secondname}} </h4>   <hr>
+            <h4>Email:  {{emailaddress}} </h4>  <hr>
+            <h4>Phone Number :  0{{phone}} </h4> <hr>
+            <h4>Account Number:  {{accountnumber}}</h4>  <hr>
+            <h4>Bank Name:   {{bank}} </h4>
+
+
+          </div>
       
-        <h4>Firstname :   {{firstname}}</h4>  <hr>
-        <h4>SecondName: {{secondname}} </h4>   <hr>
-        <h4>Email:  {{emailaddress}} </h4>  <hr>
-        <h4>Phone Number :  0{{phone}} </h4> <hr>
-        <h4>Account Number:  {{accountnumber}}</h4>  <hr>
-        <h4>Bank Name:   {{bank}} </h4>
+  
         {% endblock %}
     </div>
 </body>

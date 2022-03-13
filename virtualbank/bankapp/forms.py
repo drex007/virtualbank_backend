@@ -31,7 +31,12 @@ class DashForm(ModelForm):
 
 
 class DepositForm(forms.Form):
-    deposit = forms.IntegerField(label='deposit', min_value =0)
+    deposit = forms.IntegerField(label='Deposit', min_value =0, widget=forms.TextInput(attrs={
+        "class":"inputForm",
+ 
+        "placeholder": "Enter Amount"
+
+    }))
     # password = forms.CharField(widget=forms.PasswordInput, label= 'password')
 
 
@@ -85,25 +90,25 @@ class SignUpForm2(forms.Form):
      (ZENITH_BANK , 'ZENITH BANK' ),
      (FIRST_BANK , 'FIRST BANK')
     ]
-    firstname = forms.CharField(label='firstname', max_length=50, widget=forms.TextInput(attrs={
+    firstname = forms.CharField(label='Firstname', max_length=50, widget=forms.TextInput(attrs={
         "class":"inputForm",
         "type":"text",
-        "placeholder": "FirstName"
+        "placeholder": "Enter FirstName"
 
     }))
-    lastname = forms.CharField(label='lastname', max_length=50, widget=forms.TextInput(attrs={
+    lastname = forms.CharField(label='Lastname', max_length=50, widget=forms.TextInput(attrs={
         "class":"inputForm",
         "type":"text",
-        "placeholder": "LastName"
+        "placeholder": "Enter LastName"
 
     }))
-    phonenumber = forms.IntegerField(label='phonenumber', min_value=0, widget=forms.TextInput(attrs={
+    phonenumber = forms.IntegerField(label='Phone Number', min_value=0, widget=forms.TextInput(attrs={
         "class":"inputForm",
         "type":"text",
-        "placeholder": "Number"
+        "placeholder": " Enter phonenumber"
 
     }))
-    bank = forms.ChoiceField(label='bank',  choices= SELECT_BANK)
+    bank = forms.ChoiceField(label='Bank',  choices= SELECT_BANK)
 
 
 

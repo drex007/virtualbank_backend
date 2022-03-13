@@ -61,7 +61,7 @@ def loggin(request):
 
         if user is not None:
             login(request, user)
-            return redirect ('home')
+            return redirect ('user-dashboard', user.id)
         else:
             return HttpResponse("Username or password not correct")
     else:
@@ -128,10 +128,10 @@ def deposit(request):
   
 
     if request.method == 'POST':
-        forms = DepositForm(request.POST)
-        if forms.is_valid():
+        depositform = DepositForm(request.POST)
+        if depositform.is_valid():
             current_detail, created = Dashboard.objects.get_or_create(username=request.user)
-            amount_deposited = forms.cleaned_data['deposit']
+            amount_deposited = depositform.cleaned_data['deposit']
             current_detail.amount = current_detail.amount + amount_deposited       
             deposit = Transactions.objects.create(customer = current_user, trans_title =title,
             sender_detail=(current_detail.first_name, current_detail.last_name),
@@ -142,9 +142,9 @@ def deposit(request):
             deposit.save()
          
             print('deposit succesful')
-            return redirect('home')
-    forms = DepositForm()
-    context = {'forms': forms}
+            return redirect('user-dashboard', current_user.id)
+    depositform = DepositForm()
+    context = {'depositforms': depositform}
     
     return render(request, 'deposit.html', context )
         

@@ -33,7 +33,7 @@ def signup(request):
             bank = second_form.cleaned_data['bank'], email =user.email )
             new_user.save()
             
-            print("reg successful")
+            messages.success(request, "Account Created Successfully." )
             return redirect('loggin')
 
     forms  = SignUpForm()
@@ -125,6 +125,7 @@ def deposit(request):
     title = "Deposit"
     # current_user = User.objects.get(username=request.user)
     current_user = get_object_or_404(User, username =request.user)
+    
   
 
     if request.method == 'POST':
@@ -139,10 +140,13 @@ def deposit(request):
             account_number = current_detail.account, description=title,bank_of_receiver= current_detail.bank)
             
             current_detail.save()
-            deposit.save()
-         
             print('deposit succesful')
+
+            deposit.save()
+           
+            
             return redirect('user-dashboard', current_user.id)
+
     depositform = DepositForm()
     context = {'depositforms': depositform}
     

@@ -14,9 +14,9 @@
     <div style="margin-top: 10vh; margin-left: 20px; margin-right: 20px;">
         {% for transaction in transactions %}
         {% if transaction.trans_title == 'Deposit' %}
-        <div class="transactions"> <span style="color: green;">{{transaction}}</span> | <span style="color: green;">Amount ${{transaction.amount_transacted}}</span> | Receiver |{{transaction.receiver_detail}} </div> <hr>
+        <div class="transactions"> <span style="color: green;">{{transaction}}</span> | <span style="color: green;">Amount ${{transaction.amount_transacted}}</span> |  Receiver |{{transaction.receiver_detail}} </div> <hr>
         {% else %}
-        <div class="transactions"> <span style="color: red;">{{transaction}}</span> | <span style="color: red;">Amount ${{transaction.amount_transacted}}</span>  | Receiver |{{transaction.receiver_detail}} </div> <hr>
+        <div class="transactions"> <span style="color: red;">{{transaction}}</span> | <span style="color: red;">Amount ${{transaction.amount_transacted}}</span>  |Receiver's Account Number |{{transaction.account_number}| Receiver |{{transaction.receiver_detail}} </div> <hr>
         {% endif %}
     {% endfor %}
     </div>

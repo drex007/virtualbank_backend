@@ -32,8 +32,6 @@ def signup(request):
             amount = 0, account = accountnumber, phone_number = second_form.cleaned_data['phonenumber'],
             bank = second_form.cleaned_data['bank'], email =user.email )
             new_user.save()
-            
-            messages.success(request, "Account Created Successfully." )
             return redirect('loggin')
 
     forms  = SignUpForm()
@@ -139,9 +137,7 @@ def deposit(request):
             receiver_detail=(current_detail.first_name, current_detail.last_name) ,amount_transacted=amount_deposited,
             account_number = current_detail.account, description=title,bank_of_receiver= current_detail.bank)
             
-            current_detail.save()
-            print('deposit succesful')
-
+            current_detail.save() 
             deposit.save()
            
             

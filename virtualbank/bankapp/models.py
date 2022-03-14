@@ -48,7 +48,7 @@ class Transactions(models.Model):
     
 
     def __str__(self):
-        return f"{self.trans_title} | {self.date_of_trans[0:20]}"
+        return f"{self.trans_title} | {self.date_of_trans}"
 
     # def __init__(self, sender_detail, receiver_detail ,amount_to_send:float, account_number,bank_of_receiver):
     #     self.sender_detail = sender_detail 

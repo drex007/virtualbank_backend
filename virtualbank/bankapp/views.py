@@ -135,7 +135,7 @@ def deposit(request):
             account_number = current_detail.account, description=title,bank_of_receiver= current_detail.bank)
             current_detail.save() 
             deposit.save()
-            return redirect('user-dashboard', request.user)
+            return redirect('user-dashboard', current_user.id)
 
     depositform = DepositForm()
     context = {'depositforms': depositform}

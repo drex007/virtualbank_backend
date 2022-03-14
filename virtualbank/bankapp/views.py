@@ -123,9 +123,6 @@ def deposit(request):
     title = "Deposit"
     # current_user = User.objects.get(username=request.user)
     current_user = get_object_or_404(User, username =request.user)
-    
-  
-
     if request.method == 'POST':
         depositform = DepositForm(request.POST)
         if depositform.is_valid():
@@ -136,11 +133,8 @@ def deposit(request):
             sender_detail=(current_detail.first_name, current_detail.last_name),
             receiver_detail=(current_detail.first_name, current_detail.last_name) ,amount_transacted=amount_deposited,
             account_number = current_detail.account, description=title,bank_of_receiver= current_detail.bank)
-            
             current_detail.save() 
             deposit.save()
-           
-            
             return redirect('user-dashboard', current_user.id)
 
     depositform = DepositForm()

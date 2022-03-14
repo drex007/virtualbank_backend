@@ -22,8 +22,8 @@ class Dashboard(models.Model):
     last_name = models.CharField(max_length=100)
     amount  = models.IntegerField()
     account  = models.IntegerField()
-    phone_number = models.CharField(max_length=15)
-    bank = models.CharField(max_length=12, choices=SELECT_BANK)
+    phone_number = models.CharField(max_length=50)
+    bank = models.CharField(max_length=50, choices=SELECT_BANK)
     email = models.EmailField()
     date_opened = models.DateTimeField(auto_now_add=True)
     records = models.ForeignKey('Transactions', on_delete=models.CASCADE, null=True, blank=True)
@@ -37,13 +37,13 @@ class Dashboard(models.Model):
 
 class Transactions(models.Model):
     customer = models.ForeignKey(User, on_delete=models.CASCADE, blank = True)
-    trans_title= models.CharField(max_length=15, null=True, blank=True)
-    sender_detail = models.CharField(max_length=15, null=True, blank=True)
-    receiver_detail = models.CharField(max_length=15, null=True, blank=True)
+    trans_title= models.CharField(max_length=500, null=True, blank=True)
+    sender_detail = models.CharField(max_length=500, null=True, blank=True)
+    receiver_detail = models.CharField(max_length=500, null=True, blank=True)
     amount_transacted  = models.IntegerField(default=0,)
-    account_number = models.CharField(max_length=15, null=True, blank=True)
-    description = models.CharField(max_length=15, null=True, blank=True)
-    bank_of_receiver = models.CharField(max_length=15, blank=True)
+    account_number = models.CharField(max_length=500, null=True, blank=True)
+    description = models.CharField(max_length=500, null=True, blank=True)
+    bank_of_receiver = models.CharField(max_length=500, blank=True)
     date_of_trans = models.DateTimeField(auto_now_add=True)
     
 
